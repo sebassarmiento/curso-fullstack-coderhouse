@@ -8,9 +8,12 @@ const tasksRouter = require('./tasks');
 router.use('/:listId/tasks', tasksRouter);
 
 router.get('/', (req, res) => {
-    List.find().then(result => {
-        res.status(200).json(result)
-    })
+    console.log(req.user);
+
+    List.find()
+        .then(result => {
+            res.status(200).json(result)
+        })
         .catch(err => {
             res.status(500).json(err)
         })
